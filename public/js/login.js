@@ -1,3 +1,14 @@
+window.onload= function() { 
+//$(document).ready(function(){
+  let formulario = document.querySelectorAll('input');
+  for (var i = 0; i<formulario.length; i++) {
+    //formulario[i].classList.remove("rojo");
+    if(formulario[i].value != '')
+        try{formulario[i].previousSibling.classList.add("active");}catch(ex){console.log(ex);}
+ }
+
+}
+
 $(".form")
   .find("input, textarea")
   .on("keyup blur focus", function (e) {
