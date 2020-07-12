@@ -80,17 +80,30 @@ class LoginAuth extends BaseController
 			return redirect()->back()->withInput()->with('errors', ['El usuario o contraseña no existen o son errados, reinténtelo de nuevo']);
 		}
 		//Ahora hay que activar al usuario pues, pasa la validación
-		// login OK, save user data to session
+		// login OK, guardamos el usuario en variables $_SESSION y después, guardamos un "remember_token" de seguridad para iniciar la sesión
+		$remember_token = $credential['csrf_test_name'];
+		$SAL = 'Sa45rsp77mlk01ad'; //Texto para encriptar un token remember
+		$remember_token = hash('sha512', $SAL . $remember_token);
+
 		$this->session->set('isLoggedIn', true);
 		$this->session->set('userData', [
             'id' 			=> $user['id'],
             'username' 		=> $user['username'],
             'email' 		=> $user['email'],
             'firstname' 	=> $user['firstname'],
-            'lastname' 		=> $user['lastname']
-        ]);
+			'lastname' 		=> $user['lastname'],
+			'remember_token' => $remember_token
+		]);
+		
 
-        return redirect()->to('main/index');
+		$data = ['remember_token' => $remember_token];
+		if($this->user->update($user['id'], $data)){
+			return redirect()->to('main/index');
+		}else{
+			$this->session->set('vista_login',TRUE);
+			return redirect()->back()->withInput()->with('errors', ['Hubo un problema, reinténtelo de nuevo']);
+		}
+
 	}
 
 	public function logout()

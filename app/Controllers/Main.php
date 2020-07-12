@@ -14,5 +14,4 @@ class Main extends BaseController
         return redirigir('main/index'); //Redirección a ruta protegida
         
     }
-
 }

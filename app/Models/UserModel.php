@@ -8,7 +8,7 @@ class UserModel extends Model
     protected $primaryKey = 'id';
     protected $returnType  = 'array';
 
-    protected $allowedFields = ['firstname', 'lastname', 'email', 'username','password','active'];
+    protected $allowedFields = ['firstname', 'lastname', 'email', 'username','password','active','remember_token'];
 
     protected $useTimestamps = true; //La tabla debe contener los created_at y updated_at
     protected $createdField  = 'created_at';

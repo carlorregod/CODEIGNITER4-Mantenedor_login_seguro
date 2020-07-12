@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
+	<?php echo csrf_meta(); ?>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/login.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/iziToast.min.css">
 	<script src="<?php echo base_url(); ?>/js/jquery3.js"></script>
@@ -58,7 +59,6 @@
 	          <h1>Registrarse</h1>
 				<?php echo form_open(base_url().'/register',['id'=>'register', 'class'=>'login','method'=>'POST']); ?>
 
-
 	          <div class="top-row">
 	            <div class="field-wrap">
             	<?php  	echo form_label('Nombre <span class="req">*</span>', 'firstname');
@@ -100,7 +100,7 @@
 
 	        <div id="login">
 	          <h1>Bienvenido, ingrese al sistema</h1>
-				<?php echo form_open(base_url().'/login',['id'=>'login', 'class'=>'login','method'=>'POST']); ?>
+				<?php echo form_open(base_url().'/login',['id'=>'login', 'class'=>'login','method'=>'POST']); ?>				
 
 	            <div class="field-wrap">
 	            	<?php  	echo form_label('Nombre usuario <span class="req">*</span>', 'username1');
