@@ -34,6 +34,9 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'LoginAuth::index');
 $routes->post('register', 'LoginAuth::register');
 $routes->post('login', 'LoginAuth::login');
+//Dentro del sistema
+$routes->post('logout', 'LoginAuth::logout');
+
 
 /**
  * --------------------------------------------------------------------

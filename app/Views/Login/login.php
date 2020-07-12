@@ -15,6 +15,9 @@
 	<!-- Mensaje inicial de encabezado ante errores, mensajes, etc -->
 		<script type="text/javascript">
 		$(document).ready(function(){
+			<?php if(null !== $session->get('vista_login')): ?>
+				document.querySelector('a[href="#login"]').click();
+			<?php endif; ?>
 			<?php if(isset($mensaje)): ?>
 			iziToast.show({
 			    title: 'Información',
